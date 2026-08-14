@@ -71,6 +71,7 @@ Assets/Plugins/**           linguist-generated
 Packages/packages-lock.json linguist-generated
 
 # Unity LFS
+*.aseprite              lfs
 *.cubemap               lfs
 *.unitypackage          lfs
 
