@@ -12,12 +12,16 @@ public class movimento : MonoBehaviour
 
     private bool saltoExtra;
     private DirecaoPersonagem direcaoAtual;
+
+    private Animator animator;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         direcaoAtual = DirecaoPersonagem.DIREITA;
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -50,6 +54,10 @@ public class movimento : MonoBehaviour
         {
             GirarPersonagem(DirecaoPersonagem.ESQUERDA);
         }
+
+        animator.SetBool("Correr", entradaHorizontal != 0);
+        animator.SetBool("EstaNoChao", estaNoChao);
+
     }
     private void FixedUpdate()
     {
@@ -60,6 +68,8 @@ public class movimento : MonoBehaviour
     {
     rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
     rb.AddForce(Vector2.up * 300f);
+
+        animator.SetTrigger("Saltar");
     }
 
     private void GirarPersonagem(DirecaoPersonagem direcao)
