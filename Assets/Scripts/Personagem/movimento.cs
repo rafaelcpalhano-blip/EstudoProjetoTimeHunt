@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class movimento : MonoBehaviour
@@ -14,6 +16,12 @@ public class movimento : MonoBehaviour
     private DirecaoPersonagem direcaoAtual;
 
     private Animator animator;
+
+    private bool dashLiberadoParaUso = true;
+    private bool executandoDash;
+
+    [SerializeField]private TrailRenderer trailRenderer;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +30,7 @@ public class movimento : MonoBehaviour
         direcaoAtual = DirecaoPersonagem.DIREITA;
 
         animator = GetComponent<Animator>();
+        trailRenderer.emitting = false;
     }
 
     // Update is called once per frame
@@ -47,6 +56,11 @@ public class movimento : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.C) && dashLiberadoParaUso)
+        {
+            StartCoroutine(RealizarDash());
+        }
+
         if(entradaHorizontal > 0)
         {
             GirarPersonagem(DirecaoPersonagem.DIREITA);
@@ -61,7 +75,10 @@ public class movimento : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(entradaHorizontal * velocidade, rb.linearVelocity.y);
+        if(!executandoDash)
+        {
+            rb.linearVelocity = new Vector2(entradaHorizontal * velocidade, rb.linearVelocity.y);
+        }
     }
 
     private void ExecutarSalto()
@@ -87,6 +104,34 @@ public class movimento : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
+    }
+
+    private IEnumerator RealizarDash()
+    {
+        trailRenderer.emitting = true;
+
+        dashLiberadoParaUso = false;
+        executandoDash = true;
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
+
+        if(direcaoAtual == DirecaoPersonagem.DIREITA)
+        {
+            rb.AddForce(Vector2.right * 20, ForceMode2D.Impulse);
+        } else
+        {
+            rb.AddForce(Vector2.left * 20, ForceMode2D.Impulse);
+        }
+        yield return new WaitForSeconds(0.3f);
+
+        trailRenderer.emitting = false;
+
+        executandoDash = false;
+        rb.gravityScale = 1;
+        rb.velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(3);
+        dashLiberadoParaUso = true;
     }
 
 }
