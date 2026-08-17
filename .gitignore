@@ -109,3 +109,5 @@ InitTestScene*.unity*
 # Local character assets
 /Assets/Personagem/
 /Assets/Personagem.meta
+/Assets/Artes/Personagem/
+/Assets/Artes/Personagem.meta
