@@ -20,7 +20,9 @@ public class movimento : MonoBehaviour
     private bool dashLiberadoParaUso = true;
     private bool executandoDash;
 
-    [SerializeField]private TrailRenderer trailRenderer;
+    [SerializeField] private TrailRenderer trailRenderer;
+
+    [SerializeField] private jogadorUI jogadorUI;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -130,7 +132,15 @@ public class movimento : MonoBehaviour
         rb.gravityScale = 1;
         rb.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(3);
+
+        float contador = 0;
+        while (contador < 3f)
+        {
+            contador += Time.deltaTime;
+            jogadorUI.AtualizarProcessoDash(contador / 3f);
+            yield return null;
+        }
+
         dashLiberadoParaUso = true;
     }
 

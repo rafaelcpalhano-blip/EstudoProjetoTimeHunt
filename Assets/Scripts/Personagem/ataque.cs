@@ -10,6 +10,8 @@ public class ataque : MonoBehaviour
     [SerializeField] private ControladorHitbox controladorHitbox;
     [SerializeField] private int danoEspada = 30;
 
+    [SerializeField] private jogadorUI jogadorUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +34,14 @@ public class ataque : MonoBehaviour
         animator.SetTrigger("AtaqueComEspada");
         controladorHitbox.AplicarDano(danoEspada);
 
-        yield return new WaitForSeconds(0.6f);
+        float contador = 0;
+        while(contador < 0.6f)
+        {
+            contador += Time.deltaTime;
+            jogadorUI.AtualizarProcessoEspada(contador / 0.6f);
+            yield return null;
+        }
+
         espadaLiberadaParaUso = true;
 
     }
