@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class vida : MonoBehaviour
+public class Vida : MonoBehaviour
 {
     [SerializeField] private int vidaMaxima;
     [SerializeField] private int vidaAtual;

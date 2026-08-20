@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ataque : MonoBehaviour
+public class Ataque : MonoBehaviour
 {
 
     private bool espadaLiberadaParaUso = true;
@@ -10,7 +10,7 @@ public class ataque : MonoBehaviour
     [SerializeField] private ControladorHitbox controladorHitbox;
     [SerializeField] private int danoEspada = 30;
 
-    [SerializeField] private jogadorUI jogadorUI;
+    [SerializeField] private JogadorUI jogadorUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

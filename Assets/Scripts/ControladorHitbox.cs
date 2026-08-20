@@ -33,7 +33,7 @@ public class ControladorHitbox : MonoBehaviour
     {
         for(int i = 0; i < alvosDentroDaArea.Count; i++)
         {
-            alvosDentroDaArea[i].GetComponent<vida>().ReduzirVida(dano);
+            alvosDentroDaArea[i].GetComponent<Vida>().ReduzirVida(dano);
         }
     }
 }

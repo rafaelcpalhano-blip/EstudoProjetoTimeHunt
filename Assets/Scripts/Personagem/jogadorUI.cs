@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class jogadorUI : MonoBehaviour
+public class JogadorUI : MonoBehaviour
 {
     [SerializeField] private Image espadaProgressoImage;
     [SerializeField] private Image bolaDeFogoProgressoImage;

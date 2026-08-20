@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movimento : MonoBehaviour
+public class Movimento : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float entradaHorizontal;
@@ -22,7 +22,7 @@ public class movimento : MonoBehaviour
 
     [SerializeField] private TrailRenderer trailRenderer;
 
-    [SerializeField] private jogadorUI jogadorUI;
+    [SerializeField] private JogadorUI jogadorUI;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -114,7 +114,7 @@ public class movimento : MonoBehaviour
 
         dashLiberadoParaUso = false;
         executandoDash = true;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0;
 
         if(direcaoAtual == DirecaoPersonagem.DIREITA)
@@ -130,7 +130,7 @@ public class movimento : MonoBehaviour
 
         executandoDash = false;
         rb.gravityScale = 1;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
 
 
         float contador = 0;
