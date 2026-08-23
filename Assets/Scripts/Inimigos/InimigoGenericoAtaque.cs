@@ -36,7 +36,7 @@ public class InimigoGenericoAtaque : InimigoEstado
 
     private void IniciarAtaque()
     {
-        animator.SetTrigger("AtaqueComEspada");
+        animator.SetTrigger("Atacar");
     }
 
 
