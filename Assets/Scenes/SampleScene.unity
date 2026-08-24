@@ -37672,6 +37672,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2714116101256145504, guid: da71b6e38724ed54f87897d05874eada, type: 3}
   m_PrefabInstance: {fileID: 8841231674545159996}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2426504962518505356
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294483945201956541, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599646110335597587, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+      propertyPath: m_Name
+      value: Efeito Inimigo Morto
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
 --- !u!1001 &3035405343314951058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37814,3 +37871,4 @@ SceneRoots:
   - {fileID: 957941773}
   - {fileID: 1596115659}
   - {fileID: 593398215}
+  - {fileID: 2426504962518505356}
