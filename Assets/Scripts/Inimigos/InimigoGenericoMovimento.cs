@@ -109,4 +109,8 @@ public class InimigoGenericoMovimento : InimigoEstado
         }
     }
 
+    public void SetPerseguirJogador()
+    {
+        alvoEncontrado = true;
+    }
 }
