@@ -39,7 +39,11 @@ public class Projetil : MonoBehaviour
         int dano,
         bool ignorarInimigos)
     {
-        transform.right = alvo.position - transform.position;
+        if(alvo != null)
+        {
+            transform.right = alvo.position - transform.position;
+        }
+
 
         this.velocidade = velocidade;
         this.dano = dano;

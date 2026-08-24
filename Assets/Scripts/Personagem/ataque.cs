@@ -12,6 +12,13 @@ public class Ataque : MonoBehaviour
 
     [SerializeField] private JogadorUI jogadorUI;
 
+    private bool bolaDeFogoLiberadoParaUso = true;
+    [SerializeField] private Projetil bolaDeFogoPrefab;
+    [SerializeField] private Transform pontoDeLancamento;
+
+    [SerializeField]private int danoBolaDeFogo = 50;
+    [SerializeField] private int velocidadeBolaDeFogo = 5;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +31,11 @@ public class Ataque : MonoBehaviour
          if(Input.GetKeyDown(KeyCode.Mouse0) && espadaLiberadaParaUso)
         {
             StartCoroutine(RealizarAtaqueComEspada());
+        }
+
+         if(Input.GetKeyDown(KeyCode.Mouse1) && bolaDeFogoLiberadoParaUso)
+        {
+            StartCoroutine(RealizarAtaqueComBolaDeFogo());
         }
         
     }
@@ -44,5 +56,25 @@ public class Ataque : MonoBehaviour
 
         espadaLiberadaParaUso = true;
 
+    }
+
+    private IEnumerator RealizarAtaqueComBolaDeFogo()
+    {
+        bolaDeFogoLiberadoParaUso = false;
+        animator.SetTrigger("AtaqueComBolaDeFogo");
+        yield return new WaitForSeconds(0.3f);
+
+        Projetil projetil = Instantiate(bolaDeFogoPrefab, pontoDeLancamento.position, pontoDeLancamento.rotation);
+        projetil.IniciarLancamento(null, velocidadeBolaDeFogo, danoBolaDeFogo, false);
+
+        float contador = 0;
+        while (contador < 3f)
+        {
+            contador += Time.deltaTime;
+            jogadorUI.AtualizarProcessoBolaDeFogo(contador / 3f);
+                yield return null;
+        }
+
+        bolaDeFogoLiberadoParaUso = true;
     }
 }
