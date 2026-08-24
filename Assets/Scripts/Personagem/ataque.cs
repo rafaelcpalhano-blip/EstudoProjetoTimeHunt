@@ -19,10 +19,16 @@ public class Ataque : MonoBehaviour
     [SerializeField]private int danoBolaDeFogo = 50;
     [SerializeField] private int velocidadeBolaDeFogo = 5;
 
+    private int danoEspadaOriginal;
+    private int danoBolaDeFogoOriginal;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        danoEspadaOriginal = danoEspada;
+        danoBolaDeFogoOriginal = danoBolaDeFogo;
     }
 
     // Update is called once per frame
@@ -76,5 +82,17 @@ public class Ataque : MonoBehaviour
         }
 
         bolaDeFogoLiberadoParaUso = true;
+    }
+
+    public void AumentarDano()
+    {
+        danoEspada = danoEspadaOriginal * 2;
+        danoBolaDeFogo = danoBolaDeFogoOriginal * 2;
+    }
+
+    public void ReduzirDano()
+    {
+        danoEspada = danoEspadaOriginal;
+        danoBolaDeFogo = danoBolaDeFogoOriginal;
     }
 }
