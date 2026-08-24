@@ -111,3 +111,7 @@ InitTestScene*.unity*
 /Assets/Personagem.meta
 /Assets/Artes/Personagem/
 /Assets/Artes/Personagem.meta
+
+# Third-party Asset Store FX package
+/Assets/JMO Assets/
+/Assets/JMO Assets.meta
