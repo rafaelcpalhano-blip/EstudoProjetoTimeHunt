@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InimigoGenericoMorrer
   efeitoDeParticulasMorte: {fileID: 7599646110335597587, guid: c5a7070f6f7428848a7a99a94482e091, type: 3}
+  tempoExtra: 13
 --- !u!114 &5816060907420500654
 MonoBehaviour:
   m_ObjectHideFlags: 0
