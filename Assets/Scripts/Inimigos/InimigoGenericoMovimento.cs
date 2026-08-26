@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class InimigoGenericoMovimento : InimigoEstado
@@ -15,6 +16,7 @@ public class InimigoGenericoMovimento : InimigoEstado
     private GameObject player;
     private bool alvoEncontrado;
     [SerializeField] private ControladorHitbox controladorHitbox;
+
 
 
     void Start()
