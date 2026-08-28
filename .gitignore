@@ -117,3 +117,7 @@ InitTestScene*.unity*
 # Third-party Asset Store FX package
 /Assets/JMO Assets/
 /Assets/JMO Assets.meta
+
+# Local licensed audio assets
+/Assets/Audios/
+/Assets/Audios.meta
