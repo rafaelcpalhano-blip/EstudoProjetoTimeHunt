@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4523194795848383470}
   - component: {fileID: 3510003418728589366}
   - component: {fileID: 2847193293301588834}
+  - component: {fileID: 229465740565487351}
   m_Layer: 0
   m_Name: Flecha
   m_TagString: Untagged
@@ -152,3 +153,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projetil
   explosao: {fileID: 7062277385981912436, guid: 7eda04d3d53cd74418ca36208f5a7506, type: 3}
+--- !u!50 &229465740565487351
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5839275906713739807}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
