@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VectorGraphics;
 using UnityEngine;
 
 public class ControladorPartida : MonoBehaviour
@@ -23,6 +24,9 @@ public class ControladorPartida : MonoBehaviour
     [SerializeField] private TMP_Text danoSofridoGameoverText;
     [SerializeField] private TMP_Text chavesColetadasGameoverText;
     [SerializeField] private TMP_Text scoreGameoverText;
+
+    [SerializeField] private CloudServices cloudServices;
+    [SerializeField] private string nomeDaTabelaDeClassificacao;
 
 
     void Awake()
@@ -71,6 +75,8 @@ public class ControladorPartida : MonoBehaviour
         if(vitoria)
         {
             scoreGameoverText.text = "Score: " + Mathf.Max(0, CalcularScore());
+            cloudServices.RegistrarNovaPontuacao(nomeDaTabelaDeClassificacao, Mathf.Max(0, CalcularScore()));
+
         }
         else
         {
