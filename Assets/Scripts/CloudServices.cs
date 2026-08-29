@@ -12,10 +12,18 @@ public class CloudServices : MonoBehaviour
     {
         try
         {
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            Debug.Log("Sign in anonymously succeeded!");
+            if (UnityServices.State == ServicesInitializationState.Uninitialized)
+            {
+                await UnityServices.InitializeAsync();
+            }
 
-            if(AuthenticationService.Instance.PlayerName == "" || AuthenticationService.Instance.PlayerName == null)
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                Debug.Log("Sign in anonymously succeeded!");
+            }
+
+            if (string.IsNullOrEmpty(AuthenticationService.Instance.PlayerName))
             {
                 await AtualizarUsername("Player");
             }
@@ -29,12 +37,14 @@ public class CloudServices : MonoBehaviour
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
+            throw;
         }
         catch (RequestFailedException ex)
         {
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
+            throw;
         }
     }
 
@@ -50,11 +60,13 @@ public class CloudServices : MonoBehaviour
 
     public async Task RegistrarNovaPontuacao(string nomeDaTabela, int pontuacao)
     {
+        await RealizarLogin();
         await LeaderboardsService.Instance.AddPlayerScoreAsync(nomeDaTabela, pontuacao);
     }
 
     public async Task<List<JogadorRanking>> GetRanking(string nomeDaTabela)
     {
+        await RealizarLogin();
         var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(nomeDaTabela);
 
         List<LeaderboardEntry> list = scoresResponse.Results;

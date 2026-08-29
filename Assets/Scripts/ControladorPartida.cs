@@ -28,9 +28,13 @@ public class ControladorPartida : MonoBehaviour
     [SerializeField] private CloudServices cloudServices;
     [SerializeField] private string nomeDaTabelaDeClassificacao;
 
+    [SerializeField] private AudioSource gameoverAudioSource;
+
 
     void Awake()
     {
+        Time.timeScale = 1f;
+
         if(Instance != null && Instance != this)
         {
             Destroy(this);
@@ -63,6 +67,7 @@ public class ControladorPartida : MonoBehaviour
 
     public void FinalizarPartida(bool vitoria)
     {
+        gameoverAudioSource.Play();
         Time.timeScale = 0;
 
         gameoverPanel.SetActive(true);
@@ -114,4 +119,3 @@ public class ControladorPartida : MonoBehaviour
         }
     }
 }
- 

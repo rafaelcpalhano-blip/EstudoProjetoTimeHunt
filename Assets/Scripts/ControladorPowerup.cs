@@ -9,6 +9,8 @@ public class ControladorPowerup : MonoBehaviour
 
     [SerializeField]private JogadorUI jogadorUI;
 
+    [SerializeField] private AudioSource powerupAudioSource;
+
     void Start()
     {
         
@@ -16,6 +18,7 @@ public class ControladorPowerup : MonoBehaviour
     
     public void EquiparPowerup(TipoPowerup tipo)
     {
+        powerupAudioSource.Play();
         switch (tipo)
         {
             case TipoPowerup.INVENSIVEL:

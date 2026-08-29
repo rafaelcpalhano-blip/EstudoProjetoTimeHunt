@@ -19,6 +19,8 @@ public class InimigoGenericoMovimento : InimigoEstado
 
 
 
+
+
     void Start()
     {
         animator = GetComponent<Animator>();

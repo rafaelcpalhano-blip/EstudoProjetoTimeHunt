@@ -22,6 +22,9 @@ public class Ataque : MonoBehaviour
     private int danoEspadaOriginal;
     private int danoBolaDeFogoOriginal;
 
+    [SerializeField] private AudioSource ataqueDeEspadaAudioSource;
+    [SerializeField] private AudioSource ataqueBolaDeFogoAudioSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,6 +51,7 @@ public class Ataque : MonoBehaviour
 
     private IEnumerator RealizarAtaqueComEspada()
     {
+        ataqueDeEspadaAudioSource.Play();
         espadaLiberadaParaUso = false;
         animator.SetTrigger("AtaqueComEspada");
         controladorHitbox.AplicarDano(danoEspada);
@@ -66,6 +70,7 @@ public class Ataque : MonoBehaviour
 
     private IEnumerator RealizarAtaqueComBolaDeFogo()
     {
+        ataqueBolaDeFogoAudioSource.Play();
         bolaDeFogoLiberadoParaUso = false;
         animator.SetTrigger("AtaqueComBolaDeFogo");
         yield return new WaitForSeconds(0.3f);

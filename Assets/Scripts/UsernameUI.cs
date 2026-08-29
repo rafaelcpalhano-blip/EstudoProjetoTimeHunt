@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.Services.Core;
 using UnityEngine;
 
 public class UsernameUI : MonoBehaviour
@@ -14,13 +13,12 @@ public class UsernameUI : MonoBehaviour
 
         try
         {
-        await UnityServices.InitializeAsync();
-        await cloudServices.RealizarLogin();
+            await cloudServices.RealizarLogin();
             AtualizarUI();
         }
-        catch
+        catch (System.Exception ex)
         {
-
+            Debug.LogException(ex);
         }
     }
 
