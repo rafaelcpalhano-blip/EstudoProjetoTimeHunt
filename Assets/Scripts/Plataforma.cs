@@ -28,7 +28,7 @@ public class Plataforma : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.transform.SetParent(transform);
         }
@@ -36,6 +36,11 @@ public class Plataforma : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player") &&
+        collision.transform.parent == transform)
+        {
         collision.transform.SetParent(null);
+
+        }
     }
 }

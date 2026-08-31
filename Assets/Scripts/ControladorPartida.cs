@@ -30,6 +30,8 @@ public class ControladorPartida : MonoBehaviour
 
     [SerializeField] private AudioSource gameoverAudioSource;
 
+    [SerializeField] private bool timerAtivo = true;
+
 
     void Awake()
     {
@@ -47,7 +49,12 @@ public class ControladorPartida : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ContadorDeTempo());
+        tempoRestanteText.gameObject.SetActive(timerAtivo);
+
+        if (timerAtivo)
+        {
+            StartCoroutine(ContadorDeTempo());
+        }
     }
 
 

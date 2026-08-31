@@ -17,6 +17,8 @@ public class InimigoGenericoMovimento : InimigoEstado
     private bool alvoEncontrado;
     [SerializeField] private ControladorHitbox controladorHitbox;
 
+  
+
 
 
 
