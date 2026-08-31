@@ -32,6 +32,8 @@ public class ControladorPartida : MonoBehaviour
 
     [SerializeField] private bool timerAtivo = true;
 
+    [SerializeField] private AudioSource dezSegundosAudioSource;
+
 
     void Awake()
     {
@@ -67,6 +69,11 @@ public class ControladorPartida : MonoBehaviour
             tempoTotalDePartida++;
 
             tempoRestanteText.text = tempoRestante + "s";
+
+            if(tempoRestante == 10)
+            {
+                dezSegundosAudioSource.Play();
+            }
         }
 
         FinalizarPartida(false);

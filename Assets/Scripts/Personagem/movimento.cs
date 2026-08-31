@@ -61,7 +61,7 @@ public class Movimento : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.C) && dashLiberadoParaUso)
+        if(Input.GetKeyDown(KeyCode.LeftShift) && dashLiberadoParaUso)
         {
             StartCoroutine(RealizarDash());
         }
