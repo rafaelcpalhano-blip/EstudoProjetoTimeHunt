@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.733314
+      value: -4.1080003
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -396,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885270585473244957, guid: 4f1a2d5319b63a34193ae6977b39c057, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7132602
+      value: -2.65
       objectReference: {fileID: 0}
     - target: {fileID: 1885270585473244957, guid: 4f1a2d5319b63a34193ae6977b39c057, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3253,7 +3253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6832604
+      value: -2.53
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4465,7 +4465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.62326
+      value: -6.81
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6508,7 +6508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.733314
+      value: -4.1080003
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6639,7 +6639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885270585473244957, guid: 4f1a2d5319b63a34193ae6977b39c057, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.70272
+      value: -7.66
       objectReference: {fileID: 0}
     - target: {fileID: 1885270585473244957, guid: 4f1a2d5319b63a34193ae6977b39c057, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7844,7 +7844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.2367396
+      value: 5.894
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8833,7 +8833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.733314
+      value: -4.108
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9181,12 +9181,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 957941778}
-        m_TargetAssemblyTypeName: jogadorUI
-        m_MethodName: 
+        m_TargetAssemblyTypeName: JogadorUI, Assembly-CSharp
+        m_MethodName: AtualizarVidaMaxima
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9194,13 +9194,85 @@ MonoBehaviour:
         m_CallState: 2
   OnReduzirVida:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 957941778}
+        m_TargetAssemblyTypeName: JogadorUI, Assembly-CSharp
+        m_MethodName: AtualizarVidaAtual
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1545689716}
+        m_TargetAssemblyTypeName: ControladorPartida, Assembly-CSharp
+        m_MethodName: AdicionarDanoSofrido
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 917708191}
+        m_TargetAssemblyTypeName: Unity.Cinemachine.CinemachineImpulseSource, Unity.Cinemachine
+        m_MethodName: GenerateImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 396368004}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnAumentarVida:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 957941778}
+        m_TargetAssemblyTypeName: JogadorUI, Assembly-CSharp
+        m_MethodName: AtualizarVidaAtual
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMorrer:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1545689716}
+        m_TargetAssemblyTypeName: ControladorPartida, Assembly-CSharp
+        m_MethodName: FinalizarPartida
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &957941777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10211,7 +10283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6332603
+      value: -1.82
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10816,7 +10888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885270585473244957, guid: 4f1a2d5319b63a34193ae6977b39c057, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.672822
+      value: -1.63
       objectReference: {fileID: 0}
     - target: {fileID: 1885270585473244957, guid: 4f1a2d5319b63a34193ae6977b39c057, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11112,7 +11184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.733314
+      value: -4.1080003
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14160,7 +14232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.7232604
+      value: -6.54
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14569,7 +14641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.26674
+      value: 6.465
       objectReference: {fileID: 0}
     - target: {fileID: 189532295611484971, guid: 9eebf85c410485244a2b9c4abcedcbb1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47112,7 +47184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.733314
+      value: -4.1080003
       objectReference: {fileID: 0}
     - target: {fileID: 4585306565557288097, guid: e407bc5b232fc0f4cae6086890d4810d, type: 3}
       propertyPath: m_LocalPosition.z
