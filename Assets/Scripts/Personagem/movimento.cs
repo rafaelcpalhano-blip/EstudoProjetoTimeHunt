@@ -9,10 +9,17 @@ public class Movimento : MonoBehaviour
     [SerializeField] private float velocidade = 5f;
     
     private bool estaNoChao;
+    private bool estaNoCenario;
     [SerializeField] private Transform peDoPersonagem;
     [SerializeField] private LayerMask cenarioLayer;
+    private LayerMask inimigoLayer;
 
-    private bool saltoExtra;
+    [SerializeField] private int quantidadeMaximaDePulos = 2;
+    [SerializeField] private float forcaDeAderenciaAoChao = 2f;
+    [SerializeField] private float multiplicadorDeQueda = 1.5f;
+    private int pulosRestantes;
+    private bool estavaNoChao;
+    private float tempoSemAderencia;
     private DirecaoPersonagem direcaoAtual;
 
     private Animator animator;
@@ -36,29 +43,36 @@ public class Movimento : MonoBehaviour
         animator = GetComponent<Animator>();
         trailRenderer.emitting = false;
         velocidadeOriginal = velocidade;
+        pulosRestantes = quantidadeMaximaDePulos;
+        inimigoLayer = LayerMask.GetMask("Inimigo");
     }
 
     // Update is called once per frame
     void Update()
     {
         entradaHorizontal = Input.GetAxis("Horizontal");
-        estaNoChao = Physics2D.OverlapCircle(peDoPersonagem.position, 0.3f, cenarioLayer);
+        estaNoCenario = Physics2D.OverlapCircle(
+            peDoPersonagem.position,
+            0.3f,
+            cenarioLayer
+        );
 
-        if (estaNoChao)
+        bool estaSobreInimigo = VerificarSeEstaSobreInimigo();
+
+        estaNoChao = estaNoCenario || estaSobreInimigo;
+
+        if (estaNoChao && !estavaNoChao)
         {
-            saltoExtra = true;
+            pulosRestantes = quantidadeMaximaDePulos;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (estaNoChao)
-            {
-                ExecutarSalto();
+        estavaNoChao = estaNoChao;
+        tempoSemAderencia -= Time.deltaTime;
 
-            } else if(saltoExtra) {
-                saltoExtra = false;
-                ExecutarSalto();
-            }
+        if (Input.GetKeyDown(KeyCode.Space) && pulosRestantes > 0)
+        {
+            pulosRestantes--;
+            ExecutarSalto();
         }
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && dashLiberadoParaUso)
@@ -78,18 +92,72 @@ public class Movimento : MonoBehaviour
         animator.SetBool("EstaNoChao", estaNoChao);
 
     }
+
+    private bool VerificarSeEstaSobreInimigo()
+    {
+        RaycastHit2D[] contatos = Physics2D.RaycastAll(
+            peDoPersonagem.position + Vector3.up * 0.1f,
+            Vector2.down,
+            0.3f,
+            inimigoLayer
+        );
+
+        foreach (RaycastHit2D contato in contatos)
+        {
+            if (!contato.collider.isTrigger && contato.normal.y > 0.5f)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void FixedUpdate()
     {
         if(!executandoDash)
         {
-            rb.linearVelocity = new Vector2(entradaHorizontal * velocidade, rb.linearVelocity.y);
+            if (estaNoCenario && tempoSemAderencia <= 0f)
+            {
+                RaycastHit2D contatoComChao = Physics2D.Raycast(
+                    peDoPersonagem.position + Vector3.up * 0.1f,
+                    Vector2.down,
+                    0.5f,
+                    cenarioLayer
+                );
+
+                if (contatoComChao.collider != null)
+                {
+                    Vector2 normalDoChao = contatoComChao.normal;
+                    Vector2 direcaoDaRampa = new Vector2(normalDoChao.y, -normalDoChao.x);
+                    Vector2 movimentoNaRampa = direcaoDaRampa * (entradaHorizontal * velocidade);
+                    Vector2 aderencia = -normalDoChao * forcaDeAderenciaAoChao;
+
+                    rb.linearVelocity = movimentoNaRampa + aderencia;
+                }
+                else
+                {
+                    rb.linearVelocity = new Vector2(entradaHorizontal * velocidade, rb.linearVelocity.y);
+                }
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(entradaHorizontal * velocidade, rb.linearVelocity.y);
+            }
+
+            if (!estaNoChao && rb.linearVelocity.y < 0f)
+            {
+                rb.AddForce(Physics2D.gravity * (multiplicadorDeQueda - 1f) * rb.mass);
+            }
         }
     }
 
     private void ExecutarSalto()
     {
-    rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-    rb.AddForce(Vector2.up * 300f);
+        tempoSemAderencia = 0.15f;
+        estaNoChao = false;
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        rb.AddForce(Vector2.up * 300f);
 
         animator.SetTrigger("Saltar");
     }

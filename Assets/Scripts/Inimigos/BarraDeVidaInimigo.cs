@@ -10,6 +10,11 @@ public class BarraDeVidaInimigo : MonoBehaviour
         slider.gameObject.SetActive(false);
     }
 
+    private void LateUpdate()
+    {
+        slider.transform.rotation = Quaternion.identity;
+    }
+
     public void AtualizarVidaMaxima(int vidaMaxima, int vidaAtual)
     {
         slider.maxValue = vidaMaxima;
@@ -18,7 +23,7 @@ public class BarraDeVidaInimigo : MonoBehaviour
 
     public void AtualizarVidaAtual(int modificador, int vidaAtual)
     {
-        slider.gameObject.SetActive(true);
         slider.value = vidaAtual;
+        slider.gameObject.SetActive(vidaAtual > 0);
     }
 }

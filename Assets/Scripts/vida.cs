@@ -46,4 +46,14 @@ public class Vida : MonoBehaviour
         
         OnAumentarVida.Invoke(aumentoRecebido, vidaAtual);
     }
+
+    public void MorrerInstantaneamente()
+    {
+        if (vidaAtual <= 0)
+        {
+            return;
+        }
+
+        ReduzirVida(vidaAtual);
+    }
 }
