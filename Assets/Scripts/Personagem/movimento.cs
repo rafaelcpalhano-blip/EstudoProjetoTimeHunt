@@ -50,6 +50,11 @@ public class Movimento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ControladorPartida.Instance != null && ControladorPartida.Instance.JogoInterrompido)
+        {
+            return;
+        }
+
         entradaHorizontal = Input.GetAxis("Horizontal");
         estaNoCenario = Physics2D.OverlapCircle(
             peDoPersonagem.position,

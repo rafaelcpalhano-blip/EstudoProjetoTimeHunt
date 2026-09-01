@@ -37,6 +37,11 @@ public class Ataque : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ControladorPartida.Instance != null && ControladorPartida.Instance.JogoInterrompido)
+        {
+            return;
+        }
+
          if(Input.GetKeyDown(KeyCode.Mouse0) && espadaLiberadaParaUso)
         {
             StartCoroutine(RealizarAtaqueComEspada());

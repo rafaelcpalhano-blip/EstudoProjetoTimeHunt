@@ -34,6 +34,17 @@ public class ControladorPartida : MonoBehaviour
 
     [SerializeField] private AudioSource dezSegundosAudioSource;
 
+    [Header("Pause")]
+    [SerializeField, Range(0f, 1f)] private float volumeDaMusicaNoPause = 0.35f;
+    [SerializeField] private GameObject pausePanel;
+
+    private AudioSource trilhaSonoraAudioSource;
+    private float volumeOriginalDaMusica;
+    private bool partidaPausada;
+    private bool partidaFinalizada;
+
+    public bool JogoInterrompido => partidaPausada || partidaFinalizada;
+
 
     void Awake()
     {
@@ -51,11 +62,54 @@ public class ControladorPartida : MonoBehaviour
 
     void Start()
     {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+
+        GameObject trilhaSonora = GameObject.Find("TrilhaSonora");
+
+        if (trilhaSonora != null)
+        {
+            trilhaSonoraAudioSource = trilhaSonora.GetComponent<AudioSource>();
+
+            if (trilhaSonoraAudioSource != null)
+            {
+                volumeOriginalDaMusica = trilhaSonoraAudioSource.volume;
+            }
+        }
+
         tempoRestanteText.gameObject.SetActive(timerAtivo);
 
         if (timerAtivo)
         {
             StartCoroutine(ContadorDeTempo());
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P) && !partidaFinalizada)
+        {
+            AlternarPause();
+        }
+    }
+
+    private void AlternarPause()
+    {
+        partidaPausada = !partidaPausada;
+        Time.timeScale = partidaPausada ? 0f : 1f;
+
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(partidaPausada);
+        }
+
+        if (trilhaSonoraAudioSource != null)
+        {
+            trilhaSonoraAudioSource.volume = partidaPausada
+                ? volumeOriginalDaMusica * volumeDaMusicaNoPause
+                : volumeOriginalDaMusica;
         }
     }
 
@@ -81,6 +135,24 @@ public class ControladorPartida : MonoBehaviour
 
     public void FinalizarPartida(bool vitoria)
     {
+        if (partidaFinalizada)
+        {
+            return;
+        }
+
+        partidaFinalizada = true;
+        partidaPausada = false;
+
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+
+        if (trilhaSonoraAudioSource != null)
+        {
+            trilhaSonoraAudioSource.volume = volumeOriginalDaMusica;
+        }
+
         gameoverAudioSource.Play();
         Time.timeScale = 0;
 
@@ -130,6 +202,24 @@ public class ControladorPartida : MonoBehaviour
         if (chavesColetadas >= 3)
         {
             FinalizarPartida(true);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+
+        if (trilhaSonoraAudioSource != null)
+        {
+            trilhaSonoraAudioSource.volume = volumeOriginalDaMusica;
+        }
+
+        if (partidaPausada)
+        {
+            Time.timeScale = 1f;
         }
     }
 }
